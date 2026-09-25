@@ -1,0 +1,9 @@
+# Lake build outputs and downloaded packages
+.lake/
+lake-packages/
+
+# Editor backup files
+*~
+*.swp
+*.swo
+*.bak
