@@ -3,6 +3,7 @@ import Mathlib.MeasureTheory.Measure.Restrict
 import Mathlib.MeasureTheory.Measure.Support
 import Mathlib.MeasureTheory.Measure.Typeclasses.NullSingletonClass
 import Mathlib.MeasureTheory.Measure.Typeclasses.Probability
+import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
 import Mathlib.MeasureTheory.Integral.Bochner.Basic
 import Mathlib.MeasureTheory.Function.StronglyMeasurable.AEStronglyMeasurable
 import Mathlib.MeasureTheory.OuterMeasure.AE
@@ -30,6 +31,7 @@ structure MSData where
   h1 : a1 < b1
   h2 : a2 < b2
   h3 : a2 < b1
+  h4 : a1 < b2
   mu : Measure ℝ
   nu : Measure ℝ
   mu_probability : IsProbabilityMeasure mu
@@ -38,6 +40,8 @@ structure MSData where
   nu_noAtoms : MeasureTheory.NullSingletonClass nu
   mu_supported : Measure.support mu ⊆ Set.Icc a1 b1
   nu_supported : Measure.support nu ⊆ Set.Icc a2 b2
+  vol_absB : Measure.AbsolutelyContinuous (volume.restrict (Set.Icc a1 b1)) mu
+  vol_absS : Measure.AbsolutelyContinuous (volume.restrict (Set.Icc a2 b2)) nu
   mu_fullSupport : ∀ s : Set ℝ, IsOpen s → (s ∩ Set.Ioo a1 b1).Nonempty → 0 < mu s
   nu_fullSupport : ∀ s : Set ℝ, IsOpen s → (s ∩ Set.Ioo a2 b2).Nonempty → 0 < nu s
   q : ℝ × ℝ → ℝ
