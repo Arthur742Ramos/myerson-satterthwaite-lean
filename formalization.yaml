@@ -5,10 +5,11 @@ project:
   name: "Myerson-Satterthwaite impossibility theorem (continuous bilateral-trade version)"
   description: >-
     Formalizes the continuous-type bilateral-trade impossibility result: no
-    mechanism can satisfy ex post efficiency, Bayesian incentive compatibility,
-    interim individual rationality, and weak budget balance when buyer and
-    seller supports overlap. The proof uses payoff equivalence and envelope
-    identities, together with the strict rent-gap identity B + C > S.
+    mechanism can satisfy ex post efficiency (almost surely), Bayesian
+    incentive compatibility, interim individual rationality, and weak ex ante
+    budget balance when buyer and seller supports overlap. The proof uses
+    payoff equivalence and envelope identities, together with the strict
+    rent-gap identity B + C > S.
   authors: ["Arthur Freitas Ramos"]
   license: "BSD-3-Clause"
   responsible_maintainers: ["Arthur Freitas Ramos"]
@@ -35,11 +36,14 @@ sources:
 status:
   scope: >-
     The library formalizes continuous buyer values and seller costs on compact
-    intervals, atomless full-support probability measures absolutely continuous
-    with respect to Lebesgue measure, allocation and transfer rules, ex post
-    efficiency, Bayesian incentive compatibility, interim individual
-    rationality, and weak ex ante budget balance. Challenge.lean carries exactly
-    one deliberate statement hole, excluded from the implementation sorry_count.
+    intervals; atomless type measures such that each restricted type measure
+    dominates the Lebesgue measure restricted to its interval (every nonempty
+    open subset of the interval has positive probability; no density
+    requirement is imposed); allocation and transfer rules; ex post efficiency
+    on the restricted type measures (i.e. almost surely, not pointwise);
+    Bayesian incentive compatibility; interim individual rationality; and weak
+    ex ante budget balance. Challenge.lean carries exactly one deliberate
+    statement hole, excluded from the implementation sorry_count.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms: ["propext", "Quot.sound", "Classical.choice"]
@@ -60,11 +64,13 @@ automation:
 
 fidelity:
   divergences: >-
-    Continuous types on compact intervals; atomless full-support distributions
-    absolutely continuous with respect to Lebesgue measure (positive densities);
-    BIC and interim IR are stated in the restricted one-sided-deviation envelope
-    form; budget balance is weak and ex ante; interim quantities are Bochner
-    integrals.
+    Continuous types on compact intervals; atomless type measures where each
+    restricted type measure dominates the restricted Lebesgue measure on its
+    interval (full support; no density requirement); efficiency required on the
+    restricted type measures, i.e. almost surely rather than at every
+    buyer-seller type pair; BIC and interim IR are stated in the
+    restricted one-sided-deviation envelope form; budget balance is weak and
+    ex ante; interim quantities are Bochner integrals.
 
 alignment:
   namespace: "MS.Palomar"
@@ -113,9 +119,10 @@ review:
   status: "self-assessed"
   reviewers: ["none"]
   notes: >-
-    A registry/web search on 2026-09-26 found no prior Palomar entries for this
-    theorem; a public prior-art survey reports no known formalization in any
-    proof assistant. Challenge contains one deliberate statement hole, excluded
-    from the implementation sorry_count. Hosted Comparator verification,
-    Palomar editorial review, and registration are separate states and are not
-    inferred from local compilation.
+    A registry search on 2026-09-26 found no prior Palomar entries for this
+    theorem. Beyond the registry, no other formalization of this theorem in any
+    proof assistant is known to the author; this is stated as the author's
+    current knowledge, not as an established result. Challenge contains one
+    deliberate statement hole, excluded from the implementation sorry_count.
+    Hosted Comparator verification, Palomar editorial review, and registration
+    are separate states and are not inferred from local compilation.
